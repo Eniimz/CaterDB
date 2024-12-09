@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Wpf_Catering_Db_system.DialogBoxes;
-using Wpf_Catering_Db_system.DatabaseTypes;
+using Wpf_Catering_Db_system.Sections;
 
 namespace Wpf_Catering_Db_system
 {
@@ -24,14 +24,14 @@ namespace Wpf_Catering_Db_system
         public MainWindow()
         {
             InitializeComponent();
-            getMenus();
+            MainSection.Content = new Menus();
         }
 
         //private string connectionString = "Data Source=ENIIM\AZAZ;Initial Catalog=AlamCaterers;Integrated Security=True;Trust Server Certificate=True";
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.ChangedButton == MouseButton.Left)
+            if (e.ChangedButton == MouseButton.Left)
             {
                 this.DragMove();
             }
@@ -40,7 +40,7 @@ namespace Wpf_Catering_Db_system
         private bool isMaximized = false;
         private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if(e.ClickCount == 2)
+            if (e.ClickCount == 2)
             {
                 if (isMaximized)
                 {
@@ -59,68 +59,114 @@ namespace Wpf_Catering_Db_system
             }
         }
 
-        public void getMenus()
+        private void MenuSectionButton_Click(object sender, RoutedEventArgs e)
         {
-
-            try
-            {
-                SqlConnection con = new SqlConnection("Data Source=ENIIM\\AZAZ;Initial Catalog=AlamCaterers;Integrated Security=True;Trust Server Certificate=True");
-
-                con.Open();
-
-                SqlCommand command = new SqlCommand("exec GetAllMenus", con);
-
-                SqlDataAdapter sd = new SqlDataAdapter(command);
-                DataTable dt = new DataTable();
-                sd.Fill(dt);
-
-                MessageBox.Show($"Rows retrieved: {dt.Rows.Count}");
-
-                MenuGridTable.ItemsSource = dt.DefaultView;
-                
-                con.Close();
-               
-            }
-            catch(SqlException ex)
-            {
-                MessageBox.Show(ex.Message );
-            }
-            
-
+            MainSection.Content = new Menus();
         }
 
-        private void addNewMenuButton_Click(object sender, RoutedEventArgs e)
+        private void CustomerSectionButton_Click(object sender, RoutedEventArgs e)
         {
-            menu_window menu_Window = new menu_window(this); //passing the mainWindow class to the dialogBox constructor to refresh grid
-            menu_Window.Show();
-
+            MainSection.Content = new Customers();
         }
 
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = (Button)sender;
-            
-            if (button.Tag is DataRowView dataRowView)
-            {
-                int menuId = (int)dataRowView["ID"];
-                string menuName = (string)dataRowView["MenuName"].ToString();
-                string Category = (string)dataRowView["Category"].ToString();
-                decimal price = (decimal)dataRowView["Price"];
-                string Description = (string)dataRowView["Description"].ToString();
-
-                menu_window menu_Window = new menu_window(this, true, menuId, menuName, Category, price, Description); //passing the mainWindow class to the dialogBox constructor to refresh grid
-                menu_Window.Show();
-
-                Console.WriteLine(menuId);
-                Console.WriteLine(menuName);
-                Console.WriteLine(Category);
-                Console.WriteLine(Description);
-                Console.WriteLine(price);
-            }
 
 
-            
-            //menu_window menuWindow = new menu_window(this ,selectedMenu.menuName);
-        }
+        //public void getMenus()
+        //{
+
+        //    try
+        //    {
+        //        SqlConnection con = new SqlConnection("Data Source=ENIIM\\AZAZ;Initial Catalog=AlamCaterers;Integrated Security=True;Trust Server Certificate=True");
+
+        //        con.Open();
+
+        //        SqlCommand command = new SqlCommand("exec GetAllMenus", con);
+
+        //        SqlDataAdapter sd = new SqlDataAdapter(command);
+        //        DataTable dt = new DataTable();
+        //        sd.Fill(dt);
+
+        //        //MessageBox.Show($"Rows retrieved: {dt.Rows.Count}");
+
+        //        MenuGridTable.ItemsSource = dt.DefaultView;
+
+        //        con.Close();
+
+        //    }
+        //    catch (SqlException ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+
+
+        //}
+
+        //private void addNewMenuButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    menu_window menu_Window = new menu_window(this); //passing the mainWindow class to the dialogBox constructor to refresh grid
+        //    menu_Window.Show();
+
+        //}
+
+        //private void EditButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Button button = (Button)sender;
+
+        //    if (button.Tag is DataRowView dataRowView)
+        //    {
+        //        int menuId = (int)dataRowView["ID"];
+        //        string menuName = (string)dataRowView["MenuName"].ToString();
+        //        string Category = (string)dataRowView["Category"].ToString();
+        //        decimal price = (decimal)dataRowView["Price"];
+        //        string Description = (string)dataRowView["Description"].ToString();
+
+        //        menu_window menu_Window = new menu_window(this, true, menuId, menuName, Category, price, Description); //passing the mainWindow class to the dialogBox constructor to refresh grid
+        //        menu_Window.Show();
+
+        //        Console.WriteLine(menuId);
+        //        Console.WriteLine(menuName);
+        //        Console.WriteLine(Category);
+        //        Console.WriteLine(Description);
+        //        Console.WriteLine(price);
+        //    }
+
+
+
+        //    //menu_window menuWindow = new menu_window(this ,selectedMenu.menuName);
+        //}
+
+        //private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        Button button = (Button)sender;    
+        //        int menuId = (int)button.Tag;
+
+        //        SqlConnection con = new SqlConnection("Data Source=ENIIM\\AZAZ;Initial Catalog=AlamCaterers;Integrated Security=True;Trust Server Certificate=True");
+        //        con.Open();
+        //        SqlCommand cmd = new SqlCommand("DeleteMenu", con);
+        //        {
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //        }
+
+        //        MessageBox.Show($"Deleted Row: {menuId}","Deletion Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+        //        cmd.Parameters.AddWithValue("@ID", menuId);
+        //        cmd.ExecuteNonQuery();
+
+        //        getMenus();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        {
+        //            MessageBox.Show(ex.Message);
+        //        }
+
+
+
+        //    }
+        //}
+
+
     }
 }

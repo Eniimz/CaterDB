@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
+using Wpf_Catering_Db_system.Sections;
 
 namespace Wpf_Catering_Db_system.DialogBoxes
 {
@@ -21,10 +22,10 @@ namespace Wpf_Catering_Db_system.DialogBoxes
     /// </summary>
     public partial class menu_window : Window
     {
-        private MainWindow _mainWindow;
+        private Menus _mainWindow;
         bool isUpdateMode = false;
         private int menuId;
-        public menu_window(MainWindow mainWindow, bool _isUpdateMode = false, int? _menuId = null, string menuName = null, string category = null, decimal? price = null, string description = null   ) //receiving this when the dialogBox is opened
+        public menu_window(Menus mainWindow, bool _isUpdateMode = false, int _menuId = -1, string menuName = "", string category = "", decimal price = -1, string description = ""   ) //receiving this when the dialogBox is opened
         {
             InitializeComponent();
             _mainWindow = mainWindow;

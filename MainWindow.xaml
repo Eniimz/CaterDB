@@ -54,14 +54,14 @@
 
                         <StackPanel>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="MenuSectionButton_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="SilverwareForkKnife" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Menus" />
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
+                            <Button Style="{StaticResource menuButton}" Click="CustomerSectionButton_Click" >
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="HomeVariant" Style="{StaticResource menuButtonIcon}"/>
                                     <TextBlock Text="Customers" />
@@ -95,56 +95,8 @@
 
             <!-- Main Section -->
 
-            <Grid Grid.Column="1" Margin="20 30 0 0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
+            <Frame Grid.Column="1" x:Name="MainSection" NavigationUIVisibility="Hidden" Background="Transparent"/>
 
-                <TextBlock Text="Menus" FontSize="32" FontWeight="SemiBold" Margin="0 70 0 0"/>
-
-                <Button Style="{StaticResource addButton}" Click="addNewMenuButton_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <Icon:PackIconMaterial Kind="Plus" Margin="0 0 10 0" VerticalAlignment="Center"/>
-                        <TextBlock Text="Add New Menu" />
-                    </StackPanel>
-                </Button>
-
-                <DataGrid Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="1" Margin="0 20 0 20" x:Name="MenuGridTable" AutoGenerateColumns="False" >
-                    <DataGrid.Columns>
-                        <DataGridCheckBoxColumn Width="auto" CanUserResize="False" >
-                            <DataGridCheckBoxColumn.Header>
-                                <CheckBox />
-                            </DataGridCheckBoxColumn.Header>
-                        </DataGridCheckBoxColumn>
-
-                        <DataGridTextColumn Header="#" Width="auto" CanUserResize="False" IsReadOnly="True" Binding="{ Binding ID }" />
-                        <DataGridTextColumn Header="Menu" Width="*" CanUserResize="False" IsReadOnly="True" Binding="{ Binding MenuName }" />
-                        <DataGridTextColumn Header="Category" Width="*" CanUserResize="False" IsReadOnly="True" Binding="{ Binding Category }"/>
-                        <DataGridTextColumn Header="Price" Width="*" CanUserResize="False" IsReadOnly="True" Binding="{ Binding Price }"/>
-                        <DataGridTextColumn Header="Description" Width="*" CanUserResize="False" IsReadOnly="True" Binding="{ Binding Description }"/>
-
-                        <DataGridTemplateColumn Header="Operations" Width="auto" CanUserResize="False">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <Button Style="{ StaticResource gridEditButton }" Tag="{Binding}" Click="EditButton_Click">
-                                            <Icon:PackIconMaterial Kind="PencilOutline" Style="{StaticResource gridButtonIcon}"/>
-                                        </Button>
-                                        <Button Style="{ StaticResource gridRemoveButton}" Tag="{Binding}">
-                                            <Icon:PackIconMaterial Kind="TrashCanOutline" Style="{StaticResource gridButtonIcon}" />
-                                        </Button>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-
-                    </DataGrid.Columns>
-                </DataGrid>
-                
-            </Grid>
-            
         </Grid>
         
     </Border>

@@ -66,3 +66,10 @@ C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\bin\De
 C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Runtime.Caching.dll
 C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\DialogBoxes\menu-window.g.cs
 C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\DialogBoxes\menu-window.baml
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Wpf Catering Db system.sourcelink.json
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\DialogBoxes\ConfirmDelete.g.cs
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\DialogBoxes\ConfirmDelete.baml
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\Menus.g.cs
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\Menus.baml
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\Customers.g.cs
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\Customers.baml

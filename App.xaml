@@ -77,7 +77,7 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
-            <Setter Property="Margin" Value="0 70 20 0"/>
+            <Setter Property="Margin" Value="0 70 0 0"/>
 
             <Setter Property="Template">
                 <Setter.Value>
