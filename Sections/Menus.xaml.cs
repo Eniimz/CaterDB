@@ -21,6 +21,7 @@ namespace Wpf_Catering_Db_system.Sections
     /// <summary>
     /// Interaction logic for Menus.xaml
     /// </summary>
+    /// 
     public partial class Menus : Page
     {
         public Menus()
@@ -42,11 +43,20 @@ namespace Wpf_Catering_Db_system.Sections
 
                 SqlDataAdapter sd = new SqlDataAdapter(command);
                 DataTable dt = new DataTable();
+
                 sd.Fill(dt);
 
+                if (dt.Rows.Count > 0)
+                {
+                    MenuGridTable.ItemsSource = dt.DefaultView; // Bind data only if rows exist
+                }
+                else
+                {
+                    MenuGridTable.ItemsSource = null; // Clear the grid when there's no data
+                    MessageBox.Show("No data yet");
+                }
                 //MessageBox.Show($"Rows retrieved: {dt.Rows.Count}");
 
-                MenuGridTable.ItemsSource = dt.DefaultView;
 
                 con.Close();
 

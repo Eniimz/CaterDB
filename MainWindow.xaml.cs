@@ -69,6 +69,12 @@ namespace Wpf_Catering_Db_system
             MainSection.Content = new Customers();
         }
 
+        private void OrderFormButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainSection.Content = (Application.Current as App)?.m_window as Order_form;
+            ;
+        }
+
 
 
         //public void getMenus()

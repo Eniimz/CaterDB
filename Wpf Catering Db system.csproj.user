@@ -10,7 +10,13 @@
     <Compile Update="DialogBoxes\ConfirmDelete.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="DialogBoxes\customer-window.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="DialogBoxes\menu-window.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="DialogBoxes\menuItems.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Sections\Customers.xaml.cs">
@@ -19,9 +25,15 @@
     <Compile Update="Sections\Menus.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Sections\Order-form.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="DialogBoxes\ConfirmDelete.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="DialogBoxes\customer-window.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="DialogBoxes\menu-window.xaml">
@@ -34,6 +46,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Sections\Menus.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Sections\Order-form.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -47,7 +47,7 @@ namespace Wpf_Catering_Db_system.DialogBoxes
         {
             string menuName = MenuNameTextBox.Text;
             string Category = CategoryTextBox.Text;
-            decimal price;
+            decimal price; //if parsed, stored in price, if not then error
             string description = DescriptionTextBox.Text;
 
             if(string.IsNullOrWhiteSpace(menuName) || string.IsNullOrWhiteSpace(Category) || string.IsNullOrWhiteSpace(description) || !decimal.TryParse(PriceTextBox.Text, out price))

@@ -73,3 +73,9 @@ C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\De
 C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\Menus.baml
 C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\Customers.g.cs
 C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\Customers.baml
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\DialogBoxes\customer-window.g.cs
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\DialogBoxes\customer-window.baml
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\Order-form.g.cs
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\Order-form.baml
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\DialogBoxes\menuItems.g.cs
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\DialogBoxes\menuItems.baml

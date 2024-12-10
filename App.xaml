@@ -344,6 +344,35 @@
 
 
         <!--end data grid styles-->
+
+
+        <!-- Added Menus Panel -->
+        <Style x:Key="AddMenusPanel" TargetType="DockPanel">
+            <Setter Property="Background" Value="#e6e6e6"/>
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Margin" Value="0 15 0 0"/>
+
+        </Style>
+
+        <Style x:Key="AddMenusCaption" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="DockPanel.Dock" Value="Left" />
+        </Style>
+
+        <Style x:Key="PlusMinusButtonsPanel" TargetType="StackPanel">
+            <Setter Property="DockPanel.Dock" Value="Right" />
+            <Setter Property="Orientation" Value="Horizontal" />
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="0 5 10 5" />
+            
+
+        </Style>
+
+        <Style x:Key="PlusMinusButtons" TargetType="Button">
+            <Setter Property="Width" Value="20" />
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
         
+        <!--End Added Menus Panel -->
     </Application.Resources>
 </Application>

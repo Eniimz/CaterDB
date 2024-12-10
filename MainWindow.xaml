@@ -68,6 +68,13 @@
                                 </StackPanel>
                             </Button>
 
+                            <Button Style="{StaticResource menuButton}" Click="OrderFormButton_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="ClipboardText" Style="{StaticResource menuButtonIcon}"/>
+                                    <TextBlock Text="Create an order" />
+                                </StackPanel>
+                            </Button>
+                            
                             <Button Style="{StaticResource menuButton}">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="AccountGroup" Style="{StaticResource menuButtonIcon}"/>
@@ -75,12 +82,6 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{StaticResource menuButton}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="ClipboardText" Style="{StaticResource menuButtonIcon}"/>
-                                    <TextBlock Text="Orders" />
-                                </StackPanel>
-                            </Button>
 
                         </StackPanel>
 
@@ -95,7 +96,7 @@
 
             <!-- Main Section -->
 
-            <Frame Grid.Column="1" x:Name="MainSection" NavigationUIVisibility="Hidden" Background="Transparent"/>
+            <Frame Grid.Column="1" x:Name="MainSection" NavigationUIVisibility="Hidden" Background="Transparent" Margin="20,28,28,10"/>
 
         </Grid>
         

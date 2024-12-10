@@ -8,24 +8,24 @@
         Title="Add Menu" Height="300" Width="400" WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" WindowStyle="None" Background="#eff2f7"
         >
-    <Grid>
-        <Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackPanel Orientation="Vertical">
+        <Grid>
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Vertical">
                
-                <TextBlock Text="Menu Name:" VerticalAlignment="Center"/>
-                <TextBox x:Name="MenuNameTextBox" Margin="5"/>
-                <TextBlock Text="Category:" VerticalAlignment="Center"/>
-                <TextBox x:Name="CategoryTextBox" Margin="5"/>
-                <TextBlock Text="Price:" VerticalAlignment="Center"/>
-                <TextBox x:Name="PriceTextBox" Margin="5"/>
-                <TextBlock Text="Description: " VerticalAlignment="Center" />
-                <TextBox x:Name="DescriptionTextBox" Margin="5"/>
-            </StackPanel>
-            <Button Grid.Row="1" x:Name="SubmitButton" Content="Insert" Margin="5" VerticalAlignment="Bottom" Height="auto" Click="Button_Click"/>
+                    <TextBlock Text="Menu Name:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="MenuNameTextBox" Margin="5"/>
+                    <TextBlock Text="Category:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="CategoryTextBox" Margin="5"/>
+                    <TextBlock Text="Price:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="PriceTextBox" Margin="5"/>
+                    <TextBlock Text="Description: " VerticalAlignment="Center" />
+                    <TextBox x:Name="DescriptionTextBox" Margin="5"/>
+                </StackPanel>
+                <Button Grid.Row="1" x:Name="SubmitButton" Content="Insert" Margin="5" VerticalAlignment="Bottom" Height="auto" Click="Button_Click"/>
+            </Grid>
         </Grid>
-    </Grid>
 </Window>
