@@ -62,117 +62,47 @@ namespace Wpf_Catering_Db_system
         private void MenuSectionButton_Click(object sender, RoutedEventArgs e)
         {
             MainSection.Content = new Menus();
+            Order_form.allMenuItems.Clear();
         }
 
         private void CustomerSectionButton_Click(object sender, RoutedEventArgs e)
         {
             MainSection.Content = new Customers();
+            Order_form.allMenuItems.Clear();
         }
 
         private void OrderFormButton_Click(object sender, RoutedEventArgs e)
         {
-            MainSection.Content = (Application.Current as App)?.m_window as Order_form;
-            ;
+
+            Page formPage = (Application.Current as App)?.m_window as Order_form;
+            formPage = new Order_form();
+            var app = (App)Application.Current;
+            app.m_window = formPage;
+
+            MainSection.Content = formPage;
+
+
+            //MainSection.Content = (Application.Current as App)?.m_window as Order_form;
+
+
+        }
+
+        private void ordersListButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainSection.Content = new order_management();
+            Order_form.allMenuItems.Clear();
+        }
+
+        private void TransactionsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainSection.Content = new Transactions();
+            Order_form.allMenuItems.Clear();
+
         }
 
 
 
-        //public void getMenus()
-        //{
-
-        //    try
-        //    {
-        //        SqlConnection con = new SqlConnection("Data Source=ENIIM\\AZAZ;Initial Catalog=AlamCaterers;Integrated Security=True;Trust Server Certificate=True");
-
-        //        con.Open();
-
-        //        SqlCommand command = new SqlCommand("exec GetAllMenus", con);
-
-        //        SqlDataAdapter sd = new SqlDataAdapter(command);
-        //        DataTable dt = new DataTable();
-        //        sd.Fill(dt);
-
-        //        //MessageBox.Show($"Rows retrieved: {dt.Rows.Count}");
-
-        //        MenuGridTable.ItemsSource = dt.DefaultView;
-
-        //        con.Close();
-
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-
-
-        //}
-
-        //private void addNewMenuButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    menu_window menu_Window = new menu_window(this); //passing the mainWindow class to the dialogBox constructor to refresh grid
-        //    menu_Window.Show();
-
-        //}
-
-        //private void EditButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Button button = (Button)sender;
-
-        //    if (button.Tag is DataRowView dataRowView)
-        //    {
-        //        int menuId = (int)dataRowView["ID"];
-        //        string menuName = (string)dataRowView["MenuName"].ToString();
-        //        string Category = (string)dataRowView["Category"].ToString();
-        //        decimal price = (decimal)dataRowView["Price"];
-        //        string Description = (string)dataRowView["Description"].ToString();
-
-        //        menu_window menu_Window = new menu_window(this, true, menuId, menuName, Category, price, Description); //passing the mainWindow class to the dialogBox constructor to refresh grid
-        //        menu_Window.Show();
-
-        //        Console.WriteLine(menuId);
-        //        Console.WriteLine(menuName);
-        //        Console.WriteLine(Category);
-        //        Console.WriteLine(Description);
-        //        Console.WriteLine(price);
-        //    }
-
-
-
-        //    //menu_window menuWindow = new menu_window(this ,selectedMenu.menuName);
-        //}
-
-        //private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        Button button = (Button)sender;    
-        //        int menuId = (int)button.Tag;
-
-        //        SqlConnection con = new SqlConnection("Data Source=ENIIM\\AZAZ;Initial Catalog=AlamCaterers;Integrated Security=True;Trust Server Certificate=True");
-        //        con.Open();
-        //        SqlCommand cmd = new SqlCommand("DeleteMenu", con);
-        //        {
-        //            cmd.CommandType = CommandType.StoredProcedure;
-        //        }
-
-        //        MessageBox.Show($"Deleted Row: {menuId}","Deletion Success", MessageBoxButton.OK, MessageBoxImage.Information);
-
-        //        cmd.Parameters.AddWithValue("@ID", menuId);
-        //        cmd.ExecuteNonQuery();
-
-        //        getMenus();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        {
-        //            MessageBox.Show(ex.Message);
-        //        }
-
-
-
-        //    }
-        //}
-
+       
 
     }
 }

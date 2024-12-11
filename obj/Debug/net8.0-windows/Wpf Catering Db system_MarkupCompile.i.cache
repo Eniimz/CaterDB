@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\App.xaml
-8-676943216
+132090754690
 
-15-963754515
+201493236988
 217751299798
-DialogBoxes\ConfirmDelete.xaml;DialogBoxes\customer-window.xaml;DialogBoxes\menu-window.xaml;DialogBoxes\menuItems.xaml;MainWindow.xaml;Sections\Customers.xaml;Sections\Menus.xaml;Sections\Order-form.xaml;
+DialogBoxes\ConfirmDelete.xaml;DialogBoxes\customer-window.xaml;DialogBoxes\menu-window.xaml;DialogBoxes\menuItems.xaml;DialogBoxes\orderStatus-window.xaml;MainWindow.xaml;Sections\Customers.xaml;Sections\Menus.xaml;Sections\Order-form.xaml;Sections\order-management.xaml;Sections\OrderDetails.xaml;Sections\Orders.xaml;Sections\Transactions.xaml;
 
 True
 

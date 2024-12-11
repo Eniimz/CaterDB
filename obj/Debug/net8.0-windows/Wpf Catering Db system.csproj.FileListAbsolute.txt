@@ -79,3 +79,13 @@ C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\De
 C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\Order-form.baml
 C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\DialogBoxes\menuItems.g.cs
 C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\DialogBoxes\menuItems.baml
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\order-management.g.cs
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\order-management.baml
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\Orders.g.cs
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\Orders.baml
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\OrderDetails.g.cs
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\OrderDetails.baml
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\DialogBoxes\orderStatus-window.g.cs
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\DialogBoxes\orderStatus-window.baml
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\Transactions.g.cs
+C:\Users\iispe\source\repos\Wpf Catering Db system\Wpf Catering Db system\obj\Debug\net8.0-windows\Sections\Transactions.baml

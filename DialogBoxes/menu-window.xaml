@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:Wpf_Catering_Db_system.DialogBoxes"
         mc:Ignorable="d"
         Title="Add Menu" Height="300" Width="400" WindowStartupLocation="CenterScreen"
-        AllowsTransparency="True" WindowStyle="None" Background="#eff2f7"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent"
         >
+    <Border Background="white" CornerRadius="5">
         <Grid>
             <Grid Margin="10">
                 <Grid.RowDefinitions>
@@ -28,4 +29,5 @@
                 <Button Grid.Row="1" x:Name="SubmitButton" Content="Insert" Margin="5" VerticalAlignment="Bottom" Height="auto" Click="Button_Click"/>
             </Grid>
         </Grid>
+    </Border>
 </Window>

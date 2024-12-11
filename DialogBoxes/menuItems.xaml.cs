@@ -48,7 +48,7 @@ namespace Wpf_Catering_Db_system.DialogBoxes
                         ID = reader.GetInt32(0), //get int from first column (0)
                         Name = reader.GetString(1), //get string from second column
                         price = reader.GetDecimal(2), //get int from third column (2)
-
+                        quantity = 1
                     });
                 }
 
@@ -73,18 +73,61 @@ namespace Wpf_Catering_Db_system.DialogBoxes
 
         }
 
+        private Boolean DuplicateMenus(MenuItemType menuItem)
+        {
+            foreach (TextBlock block in Order_form.globalCounts)
+            {
+                if ((int)block.Tag == menuItem.ID)
+                {
+                    MenuItemType foundItem = Order_form.allMenuItems.Find(item => item.ID == menuItem.ID);
+                    if (foundItem == null)
+                    {
+                        return false;
+                    }
+                    foundItem.quantity++;
+                    block.Text = $" {foundItem.quantity} ";
+                    decimal sum = 0;
+                    foreach(MenuItemType item in Order_form.allMenuItems)
+                    {
+                        var itemPrice = item.price * item.quantity;
+                        sum += itemPrice;
+                    }
+                    Order_form.globalTextBlock.Text = $"Total: Rs {sum}";
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         private void MenuButton_Click(object sender, EventArgs e)
         {
-
-            
 
             Button button = (Button)sender;
             MenuItemType menuItem = (MenuItemType)button.Tag;
 
-            MessageBox.Show($"{menuItem.Name}");
+            if(DuplicateMenus(menuItem))
+            {
+                return;
+            }
 
-            Order_form orderForm = (Application.Current as App)?.m_window as Order_form;
-            orderForm.populateAddedProducts(menuItem);
+            var app = (App)Application.Current;
+            
+            //usging the current instance instead of creating another one
+
+            if(app.m_window is Order_form currentOrderFormPage)
+            {
+                currentOrderFormPage.populateAddedProducts(menuItem);
+            }
+            else
+            {
+                MessageBox.Show("The current page is not an Order_form instance!");
+            }
+
+
+
+            //Order_form orderForm = (Application.Current as App)?.m_window as Order_form;
+            //orderForm.populateAddedProducts(menuItem);
 
         }
         private void CrossButton_Click(object sender, RoutedEventArgs e)

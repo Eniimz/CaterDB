@@ -43,58 +43,58 @@ namespace Wpf_Catering_Db_system.DialogBoxes
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string menuName = MenuNameTextBox.Text;
-            string Category = CategoryTextBox.Text;
-            decimal price; //if parsed, stored in price, if not then error
-            string description = DescriptionTextBox.Text;
-
-            if(string.IsNullOrWhiteSpace(menuName) || string.IsNullOrWhiteSpace(Category) || string.IsNullOrWhiteSpace(description) || !decimal.TryParse(PriceTextBox.Text, out price))
+            private void Button_Click(object sender, RoutedEventArgs e)
             {
-                MessageBox.Show("Please Enter Valid data", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
+                string menuName = MenuNameTextBox.Text;
+                string Category = CategoryTextBox.Text;
+                decimal price; //if parsed, stored in price, if not then error
+                string description = DescriptionTextBox.Text;
+
+                if(string.IsNullOrWhiteSpace(menuName) || string.IsNullOrWhiteSpace(Category) || string.IsNullOrWhiteSpace(description) || !decimal.TryParse(PriceTextBox.Text, out price))
+                {
+                    MessageBox.Show("Please Enter Valid data", "Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
             
-            try
-            {
-                SqlConnection con = new SqlConnection("Data Source=ENIIM\\AZAZ;Initial Catalog=AlamCaterers;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
-                SqlCommand command;
-                if (isUpdateMode)
+                try
                 {
-                    command = new SqlCommand("UpdateMenu", con);
+                    SqlConnection con = new SqlConnection("Data Source=ENIIM\\AZAZ;Initial Catalog=AlamCaterers;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+                    SqlCommand command;
+                    if (isUpdateMode)
                     {
-                        command.CommandType = CommandType.StoredProcedure;
+                        command = new SqlCommand("UpdateMenu", con);
+                        {
+                            command.CommandType = CommandType.StoredProcedure;
+                        }
+                        command.Parameters.AddWithValue("@ID", menuId);
                     }
-                    command.Parameters.AddWithValue("@ID", menuId);
-                }
-                else
+                    else
+                    {
+                        command = new SqlCommand("AddMenu", con);
+                        {
+                            command.CommandType = CommandType.StoredProcedure;
+                        }
+
+                    }
+
+                    command.Parameters.AddWithValue("@MenuName", menuName);
+                    command.Parameters.AddWithValue("@Category", Category);
+                    command.Parameters.AddWithValue("@Price", price);
+                    command.Parameters.AddWithValue("@Description", description);
+
+                    con.Open();
+                    command.ExecuteNonQuery();
+
+                    _mainWindow.getMenus(); //refreshing grid
+                    this.Close();
+
+                }catch (Exception ex)
                 {
-                    command = new SqlCommand("AddMenu", con);
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                    }
-
+                    MessageBox.Show(ex.Message);
                 }
-
-                command.Parameters.AddWithValue("@MenuName", menuName);
-                command.Parameters.AddWithValue("@Category", Category);
-                command.Parameters.AddWithValue("@Price", price);
-                command.Parameters.AddWithValue("@Description", description);
-
-                con.Open();
-                command.ExecuteNonQuery();
-
-                _mainWindow.getMenus(); //refreshing grid
-                this.Close();
-
-            }catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
 
         
-        }
+            }
     }
 
     

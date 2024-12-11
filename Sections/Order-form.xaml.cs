@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Wpf_Catering_Db_system.Types;
 using System.Data;
 using Wpf_Catering_Db_system.DialogBoxes;
+using System.IO.Packaging;
 
 namespace Wpf_Catering_Db_system.Sections
 {
@@ -24,15 +25,14 @@ namespace Wpf_Catering_Db_system.Sections
     /// </summary>
     public partial class Order_form : Page
     {
-        //private MenuItemType menuItem;
-
-        int itemCount = 1;
+        
+        public static List<MenuItemType> allMenuItems = new List<MenuItemType>();
+        public static List<TextBlock> globalCounts = new List<TextBlock>();
+        public static TextBlock globalTextBlock;
         public Order_form()
         {
             InitializeComponent();
-            //menuItem = _menuItem;
     
-
             List<Customer> customers = GetCustomersFromDB();
 
             DataContext = this;
@@ -63,7 +63,8 @@ namespace Wpf_Catering_Db_system.Sections
                     customers.Add(new Customer
                     {
                         ID = reader.GetInt32(0),
-                        Name = reader.GetString(1)
+                        Name = reader.GetString(1),
+                        
                     });
                 }
             }
@@ -97,7 +98,13 @@ namespace Wpf_Catering_Db_system.Sections
        
         public void populateAddedProducts(MenuItemType menuItem)
         {
-            
+            allMenuItems.Add(menuItem);
+
+            var existingTotalPriceBlock = mainStackPanel.Children.OfType<TextBlock>()
+                .FirstOrDefault(tb => tb.Name == "TotalPriceAmount");
+
+            int itemCount = menuItem.quantity;
+
             MessageBox.Show("Populating...Not null");
 
             DockPanel dockPanel = new DockPanel();
@@ -114,6 +121,14 @@ namespace Wpf_Catering_Db_system.Sections
             StackPanel stackPanel = new StackPanel();
             stackPanel.Style = (Style)Application.Current.FindResource("PlusMinusButtonsPanel");
 
+            TextBlock TotalPriceAmount = new TextBlock();
+            TotalPriceAmount.Text = $"Total: Rs {menuItem.price}";
+            TotalPriceAmount.HorizontalAlignment = HorizontalAlignment.Right;
+            TotalPriceAmount.Margin = new Thickness(0, 5, 10, 0);
+            TotalPriceAmount.FontSize = 20;
+            TotalPriceAmount.FontWeight = FontWeights.SemiBold;
+            TotalPriceAmount.Name = "TotalPriceAmount";
+
             Button plusButton = new Button();
             plusButton.Content = "+";
 
@@ -121,15 +136,41 @@ namespace Wpf_Catering_Db_system.Sections
             plusButton.Style = (Style)Application.Current.FindResource("PlusMinusButtons");
 
             TextBlock count = new TextBlock();
+            count.Tag = menuItem.ID;
+
+            globalCounts.Add(count);
             
             count.VerticalAlignment = VerticalAlignment.Center;
             count.HorizontalAlignment = HorizontalAlignment.Center;
-            count.Text = $" {itemCount.ToString()} ";
+            count.Text = $" {menuItem.quantity.ToString()} ";
 
             plusButton.Click += (sender, e) =>
             {
-                itemCount++;
                 count.Text = $" {itemCount.ToString()} ";
+                
+                menuItem.quantity++;
+                count.Text = $" {menuItem.quantity.ToString()} ";
+
+                decimal sum = 0;
+
+                foreach (MenuItemType dish in allMenuItems)
+                {
+                    var itemPrice = dish.price * dish.quantity;
+                    sum += itemPrice;
+
+                }
+
+                TotalPriceAmount.Text = $"Total: Rs {sum.ToString()}";
+
+                //after first item is added, when we add second item, we find a reference to the 
+                //total price text block at the start, after that we do create a text block instance but as
+                //the total price text block already exists we dont add it to the ui, to update the ui for rows
+                // > 1 we have to use the existing price text block which we found at the start
+
+                if (existingTotalPriceBlock != null)
+                {
+                    existingTotalPriceBlock.Text = $"Total: Rs {sum.ToString()}";
+                }
             };
 
             Button minusButton = new Button();
@@ -141,10 +182,36 @@ namespace Wpf_Catering_Db_system.Sections
 
             minusButton.Click += (sender, e) =>
             {
-                if (itemCount > 0)
+                if (menuItem.quantity > 0)
                 {
-                    itemCount--;
+                    
                     count.Text = $" {itemCount.ToString()} ";
+
+                   
+                    menuItem.quantity--;
+                    count.Text = $" {menuItem.quantity.ToString()} ";
+
+
+                    decimal sum = 0;
+
+                    foreach (MenuItemType dish in allMenuItems)
+                    {
+                        var itemPrice = dish.price * dish.quantity;
+                        sum += itemPrice;
+
+                    }
+
+                    TotalPriceAmount.Text = $"Total: Rs {sum.ToString()}";
+
+                    //after first item is added, when we add second item, we find a reference to the 
+                    //total price text block at the start, after that we do create a text block instance but as
+                    //the total price text block already exists we dont add it to the ui, to update the ui for rows
+                    // > 1 we have to use the existing price text block which we found at the start
+
+                    if (existingTotalPriceBlock != null)
+                    {
+                        existingTotalPriceBlock.Text = $"Total: Rs {sum.ToString()}";
+                    }
 
                 }
             };
@@ -157,21 +224,108 @@ namespace Wpf_Catering_Db_system.Sections
             dockPanel.Children.Add(stackPanel);
 
             AddMenusPanel.Children.Add(dockPanel);
-        }
 
-        private void CheckButton_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Check");
+            
 
-
-
-            TextBlock textBlock = new TextBlock
+            if(existingTotalPriceBlock == null)
             {
-                Text = "TEST CONTENTTTTT"
-            };
+                globalTextBlock = TotalPriceAmount;
+                mainStackPanel.Children.Add(TotalPriceAmount);
 
-            AddMenusPanel.Children.Add(textBlock);
+            }
+            else
+            {
+                decimal sum = 0;
+                globalTextBlock = existingTotalPriceBlock;
+                foreach(MenuItemType dish in allMenuItems)
+                {
+                    var itemPrice = dish.price * dish.quantity;
+                    sum = sum + itemPrice;
+                }
+
+                existingTotalPriceBlock.Text = $"Total: Rs {sum.ToString()}";
+
+            }
+            
+
+
+
         }
+
+
+        private void populateOrderDetails(int orderId)
+        {
+            SqlConnection con = new SqlConnection("Data Source=ENIIM\\AZAZ;Initial Catalog=AlamCaterers;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+            con.Open();
+
+            
+            foreach(MenuItemType item in allMenuItems)
+            {
+
+                SqlCommand cmd = new SqlCommand("AddOrderDetails", con);
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                }
+
+                cmd.Parameters.AddWithValue("OrderID", orderId);
+                cmd.Parameters.AddWithValue("MenuID", item.ID);
+                cmd.Parameters.AddWithValue("@Quantity", item.quantity);
+                cmd.Parameters.AddWithValue("@PriceAtTimeOfOrder", item.price);
+
+                cmd.ExecuteNonQuery();
+
+            }
+
+            con.Close();
+
+        }
+
+        private void SubmitOrderButton_Click(object sender, RoutedEventArgs e)
+        {
+            Customer customer = customersComboBox.SelectedItem as Customer;
+
+            decimal Totalprice = 0;
+
+            foreach(MenuItemType dish in allMenuItems)
+            {
+                var itemPrice = dish.quantity * dish.price;
+                Totalprice = Totalprice + itemPrice;
+            }
+
+            SqlConnection sqlConnection = new SqlConnection("Data Source=ENIIM\\AZAZ;Initial Catalog=AlamCaterers;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+
+            sqlConnection.Open();
+
+            SqlCommand sqlCommand = new SqlCommand("AddOrder", sqlConnection);
+            {
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+            }
+
+            sqlCommand.Parameters.AddWithValue("@CustomerId", customer.ID);
+            sqlCommand.Parameters.AddWithValue("@TotalAmount", Totalprice);
+            
+            SqlParameter orderId = new SqlParameter("@OrderID", SqlDbType.Int);
+            {
+                orderId.Direction = ParameterDirection.Output;
+            }
+
+            MessageBox.Show($"{orderId}");
+
+            sqlCommand.Parameters.Add(orderId);
+
+            sqlCommand.ExecuteNonQuery();
+
+            int finalOrderId = Convert.ToInt32(orderId.Value);
+            MessageBox.Show($"{orderId.Value}");
+            MessageBox.Show($"finalOrderId: {finalOrderId}");
+
+            sqlConnection.Close();
+
+            populateOrderDetails(finalOrderId);
+
+        }
+
+
     }
 
 

@@ -14,8 +14,10 @@ namespace Wpf_Catering_Db_system
     
     public partial class App : Application
     {
-        internal Page m_window = new Order_form();
-      
+        //internal Page m_window = new Order_form();
+        internal Page m_window;
+
+
     }
 
 }

@@ -13,6 +13,7 @@ namespace Wpf_Catering_Db_system.Types
         public string Category ;
         public decimal price;
         public string Description ;
+        public int quantity;
 
     }
 }

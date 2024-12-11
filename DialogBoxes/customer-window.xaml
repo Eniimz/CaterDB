@@ -6,25 +6,27 @@
         xmlns:local="clr-namespace:Wpf_Catering_Db_system.DialogBoxes"
         mc:Ignorable="d"
         Title="customer_window" Height="300" Width="400" WindowStartupLocation="CenterScreen"
-        AllowsTransparency="True" WindowStyle="None" Background="#eff2f7">
-    <Grid>
-        <Grid Margin="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackPanel Orientation="Vertical">
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent">
+    <Border Background="white" CornerRadius="5">
+        <Grid>
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Vertical">
 
-                <TextBlock Text="Customer Name:" VerticalAlignment="Center"/>
-                <TextBox x:Name="CustomerNameTextBox" Margin="5"/>
-                <TextBlock Text="PhoneNo:" VerticalAlignment="Center"/>
-                <TextBox x:Name="PhoneNoTextBox" Margin="5"/>
-                <TextBlock Text="Email:" VerticalAlignment="Center"/>
-                <TextBox x:Name="EmailTextBox" Margin="5"/>
-                <TextBlock Text="Address: " VerticalAlignment="Center" />
-                <TextBox x:Name="AddressTextBox" Margin="5"/>
-            </StackPanel>
-            <Button Grid.Row="1" x:Name="SubmitButton" Content="Insert" Margin="5" VerticalAlignment="Bottom" Height="auto" Click="Button_Click"/>
+                    <TextBlock Text="Customer Name:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="CustomerNameTextBox" Margin="5"/>
+                    <TextBlock Text="PhoneNo:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="PhoneNoTextBox" Margin="5"/>
+                    <TextBlock Text="Email:" VerticalAlignment="Center"/>
+                    <TextBox x:Name="EmailTextBox" Margin="5"/>
+                    <TextBlock Text="Address: " VerticalAlignment="Center" />
+                    <TextBox x:Name="AddressTextBox" Margin="5"/>
+                </StackPanel>
+                <Button Grid.Row="1" x:Name="SubmitButton" Content="Insert" Margin="5" VerticalAlignment="Bottom" Height="auto" Click="Button_Click"/>
+            </Grid>
         </Grid>
-    </Grid>
+    </Border>
 </Window>

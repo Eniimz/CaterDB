@@ -63,7 +63,7 @@ namespace Wpf_Catering_Db_system.DialogBoxes {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wpf Catering Db system;component/dialogboxes/menuitems.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wpf Catering Db system;V1.0.0.0;component/dialogboxes/menuitems.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\DialogBoxes\menuItems.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

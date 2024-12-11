@@ -18,11 +18,14 @@
             </Grid.RowDefinitions>
 
             <StackPanel Orientation="Vertical">
-                <TextBlock Text="Catering Order Form" FontSize="32" FontWeight="SemiBold" Margin="0 70 0 2"/>
+               <!-- <Button HorizontalAlignment="Right" Margin="0 70 20 2" Background="Transparent" Click="refreshButton_Click">
+                    <Icon:PackIconMaterial Kind="Refresh" />
+                </Button> -->
+                <TextBlock Margin="0 70 0 2" Text="Catering Order Form" FontSize="32" FontWeight="SemiBold"/>
                 <TextBlock Text="Create a new Catering Order" FontSize="12" Foreground="#808080" />
             </StackPanel>
 
-            <StackPanel Grid.Row="1" Orientation="Vertical">
+            <StackPanel Grid.Row="1" Orientation="Vertical" >
                 <TextBlock Text="Select Customer" Margin="0 30 0 2"/>
                 <ComboBox x:Name="customersComboBox" Height="20" SelectionChanged="customersComboBox_SelectionChanged" 
                           >
@@ -39,7 +42,22 @@
                 <TextBlock Text="Select Menu Items" Margin="0 15 0 2"/>
                 <Button Background="Transparent" BorderThickness="1" BorderBrush="Black" Content="Add Menu Items" Height="30" Padding="3" Click="AddMenuItemsButton_Click"/>
 
-                <StackPanel x:Name="AddMenusPanel" Orientation="Vertical" Margin="0 15 0 0" />
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" Height="280" Margin="0 20 0 0">
+                    
+                    <StackPanel x:Name="AddMenusPanel" Orientation="Vertical" Margin="0 15 0 0" />
+                    
+                </ScrollViewer>
+
+                <StackPanel x:Name="mainStackPanel"/>
+
+                <Button Style="{StaticResource addButton}" HorizontalAlignment="Center" Width="300" Margin="0" Click="SubmitOrderButton_Click">
+                    Submit Order
+                </Button>
+
+
+                <!-- <TextBlock Text="Total: Rs 1030" HorizontalAlignment="Right" Margin="0 5 10 0" FontSize="20"
+                           FontWeight="SemiBold" x:Name="TotalPrice" 
+                           />-->
 
                 <!-- sample Menus Dock Panel
                     <DockPanel Background="#e6e6e6" Height="40" >
@@ -60,6 +78,8 @@
                 
                 
             </StackPanel>
+
+            
             
         </Grid>
         

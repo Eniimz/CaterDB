@@ -63,7 +63,7 @@ namespace Wpf_Catering_Db_system.Sections {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Wpf Catering Db system;component/sections/menus.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Wpf Catering Db system;V1.0.0.0;component/sections/menus.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Sections\Menus.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
